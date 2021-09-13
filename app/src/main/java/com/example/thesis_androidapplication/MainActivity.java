@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+//sample comment
     public void manageMethod(View manageButton){
         Intent i =new Intent(this, secondActivity.class); //initializing the intent
         startActivity(i);  //start the next activity
