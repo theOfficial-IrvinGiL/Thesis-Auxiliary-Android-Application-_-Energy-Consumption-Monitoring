@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".secondActivity">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateButton"
         android:layout_width="234dp"
         android:layout_height="97dp"
@@ -16,9 +16,16 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.335"
+        android:textColor="#1692ac"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button1"
+        android:drawableTop="@drawable/ic_baseline_speed_24"
+       />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/custom_button1"
         android:id="@+id/manageContactsButton"
         android:layout_width="234dp"
         android:layout_height="97dp"
@@ -27,5 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/updateButton"
+        android:textColor="#1692ac"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:drawableTop="@drawable/ic_baseline_perm_contact_calendar_24"
+
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

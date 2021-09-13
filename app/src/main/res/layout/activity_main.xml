@@ -27,7 +27,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/general_button_design"/>
 
     <Button
         android:id="@+id/viewDataHistory_Button"
@@ -40,7 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/manageEnergy_Button"
         app:layout_constraintVertical_bias="0.129"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="@drawable/general_button_design"/>
 
     <Button
         android:id="@+id/instructionManual_Button"
@@ -54,7 +56,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDataHistory_Button"
         app:layout_constraintVertical_bias="0.273"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="@drawable/general_button_design"/>
 
     <ImageView
         android:id="@+id/imageView"
