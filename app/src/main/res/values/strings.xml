@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Energy Consumption Monitoring</string>
+    <string name="Developer_mentions">Developed By: Team Solid BSCPE</string>
+    <string name="main_updateButton">Manage Energy Consumption</string>
+    <string name="main_viewHistory">View Consumption Data History</string>
+    <string name="main_instructionsManual">Instructions Manual</string>
+    <string name="manage_updateButton">Update Energy Consumption</string>
+    <string name="manage_contactsButton">Manage Contacts</string>
+</resources>

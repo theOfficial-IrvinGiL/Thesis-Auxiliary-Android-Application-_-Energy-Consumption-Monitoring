@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/developer_Mentions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Developer_mentions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
+
+    <Button
+        android:id="@+id/manageEnergy_Button"
+        android:layout_width="244dp"
+        android:layout_height="63dp"
+        android:onClick="manageMethod"
+        android:text="@string/main_updateButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/viewDataHistory_Button"
+        android:layout_width="245dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="124dp"
+        android:text="@string/main_viewHistory"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manageEnergy_Button"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <Button
+        android:id="@+id/instructionManual_Button"
+        android:layout_width="244dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="124dp"
+        android:text="@string/main_instructionsManual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDataHistory_Button"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="291dp"
+        android:layout_height="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205"
+        app:srcCompat="@drawable/mainpagepictures" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
