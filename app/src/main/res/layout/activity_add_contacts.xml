@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_contacts">
+    tools:context=".add_contacts"
+    >
 
     <EditText
         android:id="@+id/newUserName"
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="53dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/addcontacts_hint_name"
         android:inputType="textPersonName"
@@ -23,9 +26,11 @@
 
     <EditText
         android:id="@+id/newUserNumber"
-        android:layout_width="386dp"
+        android:layout_width="0dp"
         android:layout_height="53dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/addcontacts_hint_number"
         android:inputType="phone"
@@ -41,54 +46,61 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="@string/addcontacts_textview_name"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="@string/addcontacts_textview_number"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newUserName"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="149dp"
-        android:layout_height="58dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/general_button_design"
         android:text="@string/addcontacts_savebutton"
         android:textAllCaps="false"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        android:background="@drawable/general_button_design"/>
+        app:layout_constraintVertical_bias="0.968" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveButton2"
-        android:layout_width="147dp"
-        android:layout_height="58dp"
+        android:id="@+id/thiscancelbutton"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/cancelclear_button_design"
         android:text="@string/addcontacts_cancelbutton"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.762"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        android:background="@drawable/cancelclear_button_design"
-        android:textColor="@color/white"/>
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
