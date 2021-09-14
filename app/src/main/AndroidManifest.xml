@@ -11,6 +11,8 @@
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
             android:name=".manage_contacts"
+            android:label="Manage Contacts"
+            android:parentActivityName=".manageEnergyConsumption"
             android:exported="true" />
         <activity
             android:name=".manageEnergyConsumption"
