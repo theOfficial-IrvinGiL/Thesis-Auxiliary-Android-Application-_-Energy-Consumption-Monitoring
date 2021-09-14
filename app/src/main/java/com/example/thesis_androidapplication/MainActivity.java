@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.manageEnergy_Button:
-                Intent i =new Intent(this, secondActivity.class); //initializing the intent
+                Intent i =new Intent(this, manageEnergyConsumption.class); //initializing the intent
                 startActivity(i);  //start the next activity
 
                 break;

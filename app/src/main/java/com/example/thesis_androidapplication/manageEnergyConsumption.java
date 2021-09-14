@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class secondActivity extends AppCompatActivity {
+public class manageEnergyConsumption extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
