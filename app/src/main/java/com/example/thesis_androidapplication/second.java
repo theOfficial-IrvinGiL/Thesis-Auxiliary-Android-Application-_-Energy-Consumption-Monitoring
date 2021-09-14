@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class manageEnergyConsumption extends AppCompatActivity implements View.OnClickListener{
+public class second extends AppCompatActivity implements View.OnClickListener{
 
 
 

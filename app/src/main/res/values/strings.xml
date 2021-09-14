@@ -105,4 +105,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="addcontacts_hint_name">Ex. Javan</string>
+    <string name="addcontacts_hint_number">Ex. 09260220908</string>
+    <string name="addcontacts_textview_name">Enter User Name:</string>
+    <string name="addcontacts_textview_number">Enter User Contact Number:</string>
+    <string name="addcontacts_savebutton">Save</string>
+    <string name="addcontacts_cancelbutton">Cancel</string>
 </resources>
