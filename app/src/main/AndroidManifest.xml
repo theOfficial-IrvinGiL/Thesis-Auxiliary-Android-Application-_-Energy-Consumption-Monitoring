@@ -10,12 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".manage_contacts"
-            android:label="Manage Contacts"
-            android:parentActivityName=".manageEnergyConsumption"
+            android:name=".add_contacts"
+            android:label="Add Contacts"
+            android:parentActivityName=".manage_contacts"
             android:exported="true" />
         <activity
-            android:name=".manageEnergyConsumption"
+            android:name=".manage_contacts"
+            android:exported="true"
+            android:label="Manage Contacts"
+            android:parentActivityName=".second" />
+        <activity
+            android:name=".second"
             android:exported="true"
             android:label="Manage Energy Consumption"
             android:parentActivityName=".MainActivity" />
