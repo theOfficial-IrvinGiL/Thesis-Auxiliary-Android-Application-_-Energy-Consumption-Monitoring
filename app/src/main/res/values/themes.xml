@@ -18,5 +18,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="Theme.Thesis_androidApplication.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Thesis_androidApplication.PopupOverlay"
+        parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
