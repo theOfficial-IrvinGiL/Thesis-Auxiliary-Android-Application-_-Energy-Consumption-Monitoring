@@ -20,13 +20,16 @@ public class manage_contacts extends AppCompatActivity {
         /*
         * color of the floating action button can be modified on the colors.xml
         * */
-        FloatingActionButton toAddcontacts = findViewById(R.id.addContactsFAbutton);
-         toAddcontacts.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Intent thisIntent =new Intent(manage_contacts.this, add_contacts.class);
 
-             }
+
+
+        FloatingActionButton toAddcontacts = findViewById(R.id.addContactsFAbutton);
+        toAddcontacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent thisIntent =new Intent(manage_contacts.this, add_contacts.class);
+                startActivity(thisIntent);
+            }
          });
 
     }
