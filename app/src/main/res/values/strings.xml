@@ -116,4 +116,10 @@
     <string name="information_from_the_system">Information from the system:</string>
     <string name="enter_how_many_users">Enter how many users:</string>
     <string name="enter_date_of_energy_reading">Enter Date of Energy Reading:</string>
+    <string name="enter_total_amount_used">Enter Total Amount Used:</string>
+    <string name="enter_total_kwh_used">Enter Total Kwh Used:</string>
+    <string name="enter_date_of_energy_reading_">Enter Date Of Energy Reading:</string>
+    <string name="refer_to_the_system">(Refer to the system)</string>
+    <string name="enter_how_many_users_">Enter How Many Users:</string>
+    <string name="input_how_many_are_the_users_of_the_system">(Input how many are the users of the system)</string>
 </resources>
