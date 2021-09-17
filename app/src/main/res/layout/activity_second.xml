@@ -10,6 +10,7 @@
         android:id="@+id/updateButton"
         android:layout_width="234dp"
         android:layout_height="97dp"
+        android:backgroundTint="#1692AC"
         android:text="@string/manage_updateButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

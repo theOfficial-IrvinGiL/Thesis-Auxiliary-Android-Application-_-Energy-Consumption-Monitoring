@@ -6,4 +6,6 @@
     <string name="main_instructionsManual">Instructions Manual</string>
     <string name="manage_updateButton">Update Energy Consumption</string>
     <string name="manage_contactsButton">Manage Contacts</string>
+    <string name="calculating_for_the_rate_of_energy_per_kilowatt_hour_kwh">Calculating for the rate of energy per kilowatt-hour (kwH)</string>
+    <string name="total_kwh_used">Total kwH used</string>
 </resources>
