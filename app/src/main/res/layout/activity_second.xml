@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".secondActivity">
+    tools:context=".manageEnergyConsumption">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateButton"
-        android:layout_width="234dp"
-        android:layout_height="97dp"
-        android:backgroundTint="#1692AC"
+        android:layout_width="262dp"
+        android:layout_height="66dp"
+        android:background="@drawable/custom_button1"
+        android:drawableStart="@drawable/ic_baseline_speed_24"
         android:text="@string/manage_updateButton"
+        android:textAllCaps="false"
+        android:textColor="#1692ac"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -19,14 +24,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.335" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/custom_button1"
         android:id="@+id/manageContactsButton"
-        android:layout_width="234dp"
-        android:layout_height="97dp"
+        android:layout_width="262dp"
+        android:layout_height="66dp"
         android:layout_marginTop="48dp"
         android:text="@string/manage_contactsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/updateButton"
+        android:textColor="#1692ac"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
+android:textSize="17sp"
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,21 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".secondActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="Manage Energy Consumption"
+            android:name=".manage_contacts"
             android:exported="true" />
         <activity
+            android:name=".manageEnergyConsumption"
+            android:exported="true"
+            android:label="Manage Energy Consumption"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:label="Energy Consumption Monitoring"
-            android:theme="@style/Theme.Thesis_androidApplication.NoActionBar"
-            android:exported="true">
+            android:theme="@style/Theme.Thesis_androidApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".update_class"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

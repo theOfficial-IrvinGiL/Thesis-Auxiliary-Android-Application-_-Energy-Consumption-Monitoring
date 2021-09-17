@@ -5,7 +5,9 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:foregroundTint="#0C0C0C">
+    android:background="#2CF8F7F7"
+    android:backgroundTint="#FDFDFD"
+    android:foregroundTint="#FAF9F9">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +15,9 @@
         android:layout_height="21dp"
         android:backgroundTint="#040404"
         android:foregroundTint="#090909"
-        android:text="Calculating for the rate of energy per kilowatt hour (kwH): "
+        android:scaleX="1"
+        android:scaleY="1.5"
+        android:text="@string/calculating_for_the_rate_of_energy_per_kilowatt_hour_kwh"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,61 +26,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.111" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="256dp"
-        android:layout_height="29dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TotalKwhUsed"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#001692AC"
-            android:foregroundTint="#040303"
-            android:hint="@string/total_kwh_used"
-            android:hintTextColor="#616161"
-            android:shadowColor="#020202"
-            android:textColor="#040404"
-            android:textColorHighlight="#000000"
-            android:textColorHint="#090909"
-            android:textColorLink="#050505"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="256dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#001692AC"
-            android:hint="Total bill amount"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(Please refer to your electric bill)"
+        android:text="@string/please_refer_to_your_electric_bill"
         android:textAlignment="textEnd"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="412dp"
         android:layout_height="64dp"
         android:background="#F3F6F6"
@@ -89,10 +54,11 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/backImageButton"
             android:layout_width="53dp"
-            android:layout_height="47dp"
+            android:layout_height="48dp"
             android:backgroundTint="#1692AC"
+            android:contentDescription="@string/todo"
             android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +66,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.529"
-            app:srcCompat="@drawable/arrow" />
+            app:srcCompat="@drawable/arrow"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textView3"
@@ -108,12 +75,28 @@
             android:layout_height="wrap_content"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:text="Update Energy Consumption"
+            android:text="@string/update_energy_consumption"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1"
+        android:scaleY="1.5"
+        android:text="@string/information_from_the_system"
+        android:textColor="#020202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
