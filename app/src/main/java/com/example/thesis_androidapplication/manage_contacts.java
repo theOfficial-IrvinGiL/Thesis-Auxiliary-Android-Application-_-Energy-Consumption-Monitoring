@@ -31,14 +31,8 @@ public class manage_contacts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_contacts);
 
-
-
-
-
         toAddcontacts = findViewById(R.id.addContactsFAbutton);
         recyclerview = findViewById(R.id.recyclerView);
-
-
 
         toAddcontacts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,16 +62,14 @@ public class manage_contacts extends AppCompatActivity {
     }
 
     //add overide method to reset list
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0){
+        if(requestCode == 1){
             recreate();
+
         }
     }
-
 
 
 

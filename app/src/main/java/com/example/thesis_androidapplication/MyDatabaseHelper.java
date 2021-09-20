@@ -92,6 +92,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+    void deleteContact(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(CONTACTS_TABLE_NAME, "user_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed to delete contact!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Contact deleted successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 }
