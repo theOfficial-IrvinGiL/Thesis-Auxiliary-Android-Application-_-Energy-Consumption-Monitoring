@@ -1,9 +1,11 @@
 package com.example.thesis_androidapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -58,12 +60,26 @@ public class manage_contacts extends AppCompatActivity {
         storeDataInArrays();
 
         //the recycler view object to retrieve from database
-        customAdapter = new CustomAdapterForContact(manage_contacts.this, contact_id, contact_userName, contact_userContact);
+        customAdapter = new CustomAdapterForContact(manage_contacts.this,manage_contacts.this, contact_id, contact_userName, contact_userContact);
         recyclerview.setAdapter(customAdapter);
         recyclerview.setLayoutManager(new LinearLayoutManager(manage_contacts.this));
 
 
     }
+
+    //add overide method to reset list
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0){
+            recreate();
+        }
+    }
+
+
+
 
     void storeDataInArrays(){
         Cursor cursor = myDB.readAllData();

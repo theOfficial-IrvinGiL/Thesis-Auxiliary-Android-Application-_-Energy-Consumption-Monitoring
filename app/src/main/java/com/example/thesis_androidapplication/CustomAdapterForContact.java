@@ -25,7 +25,7 @@ public class CustomAdapterForContact extends RecyclerView.Adapter<CustomAdapterF
     private ArrayList contact_id, contact_userName, contact_userContact;
 
     //constructor
-    CustomAdapterForContact(Context context, ArrayList contact_id, ArrayList contact_userName, ArrayList contact_userContact){
+    CustomAdapterForContact(Activity activity, Context context, ArrayList contact_id, ArrayList contact_userName, ArrayList contact_userContact){
         this.activity = activity;
         this.context = context;
 
@@ -57,6 +57,7 @@ public class CustomAdapterForContact extends RecyclerView.Adapter<CustomAdapterF
 
                 //pass the data from the recycler view into intent to the next (update) activity
                 Intent intent = new Intent(context, UpdateContacts.class);
+                intent.putExtra("contact_id", String.valueOf(contact_id.get(position)));
                 intent.putExtra("contact_name", String.valueOf(contact_userName.get(position)));
                 intent.putExtra("contact_number", String.valueOf(contact_userContact.get(position)));
 
