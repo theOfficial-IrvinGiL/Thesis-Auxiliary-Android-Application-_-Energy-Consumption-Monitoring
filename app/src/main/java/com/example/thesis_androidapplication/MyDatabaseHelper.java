@@ -75,4 +75,23 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
 
     }
+
+    void updateData (String row_id, String name, String contactNumber){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();  //initialize content value
+
+        cv. put(CONTACTS_USERNAME, name);
+        cv. put(CONTACTS_USER_CONTACTS, contactNumber);
+
+        long result = db.update(CONTACTS_TABLE_NAME, cv, "user_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed to update contact!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Contact updated successfully!", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+
+
 }

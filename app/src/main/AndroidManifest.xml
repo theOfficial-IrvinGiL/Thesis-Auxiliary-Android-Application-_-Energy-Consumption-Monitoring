@@ -12,6 +12,7 @@
         <activity
             android:name=".UpdateContacts"
             android:label="Update Contacts"
+            android:parentActivityName=".manage_contacts"
             android:exported="true" />
         <activity
             android:name=".add_contacts"
