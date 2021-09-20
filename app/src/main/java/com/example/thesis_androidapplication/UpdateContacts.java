@@ -1,7 +1,10 @@
 package com.example.thesis_androidapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +47,7 @@ public class UpdateContacts extends AppCompatActivity {
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               confirmDialog(); //show confirm dialog for deleting
             }
         });
 
@@ -53,6 +56,7 @@ public class UpdateContacts extends AppCompatActivity {
 
     }
 
+//for getting the sent data from intent
     void getAndSetIntentData(){
         if(getIntent().hasExtra("contact_id") &&
                 getIntent().hasExtra("contact_name") &&
@@ -69,7 +73,31 @@ public class UpdateContacts extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No data!", Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
+    // showing confirm dialog
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Contact: "+userName+" ?");
+        builder.setMessage("Are you sure you want to delete this contact? ");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateContacts.this);
+                myDB.deleteContact(id);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        //show confirm dialog
+        builder.create().show();
+    }
+
+    //intent to manage contacts
+
 }
