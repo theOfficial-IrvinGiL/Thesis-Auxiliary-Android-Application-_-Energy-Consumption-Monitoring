@@ -3,6 +3,7 @@ package com.example.thesis_androidapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -16,7 +17,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CONTACTS_TABLE_NAME = "user_contacts";
     private static final String CONTACTS_COLUMN_ID = "user_id";
-    private static final String CONTACTS_COLUMN_USERNAME = "user_name";
+    private static final String CONTACTS_USERNAME = "user_name";
     private static final String CONTACTS_USER_CONTACTS = "user_contact";
 
 
@@ -32,7 +33,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + CONTACTS_TABLE_NAME +
                 " (" + CONTACTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + CONTACTS_COLUMN_USERNAME + " TEXT, " + CONTACTS_USER_CONTACTS + " INTEGER)";
+                + CONTACTS_USERNAME + " TEXT, " + CONTACTS_USER_CONTACTS + " INTEGER)";
 
         db.execSQL(query);
 
@@ -49,9 +50,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();  //initialize content value
 
-        cv. put(CONTACTS_COLUMN_ID, username);
         cv. put(CONTACTS_USER_CONTACTS, contact);
-//        Toast.makeText(context, cv.describeContents(), Toast.LENGTH_SHORT).show();
+        cv. put(CONTACTS_USERNAME, username);
 
         //insert to db
         long result = db.insert(CONTACTS_TABLE_NAME, null, cv);
@@ -59,11 +59,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed to add contact!", Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(context, "Contact added successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Contact added successfully!", Toast.LENGTH_SHORT).show();
 
         }
+    }
 
 
+    Cursor readAllData(){
+        String query = "SELECT * FROM " + CONTACTS_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
 
     }
 }
