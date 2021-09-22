@@ -95,7 +95,7 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/cancelclear_button_design"
         android:text="@string/delete_button_value"
-        android:textColor="#FD0202"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
