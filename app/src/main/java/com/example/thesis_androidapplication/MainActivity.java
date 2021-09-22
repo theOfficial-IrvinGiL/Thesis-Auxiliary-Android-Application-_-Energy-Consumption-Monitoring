@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.viewDataHistory_Button:
+                Intent in =new Intent(this, history_class.class); //initializing the intent
+                startActivity(in);  //start the next activity
                 Toast.makeText(this,"You have selected view data history",Toast.LENGTH_SHORT).show();
 
                 break;

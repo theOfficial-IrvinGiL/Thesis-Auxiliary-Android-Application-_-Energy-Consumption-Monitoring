@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".update_class"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".history_class" />
     </application>
 
 </manifest>
