@@ -34,6 +34,8 @@ public class manage_contacts extends AppCompatActivity {
         toAddcontacts = findViewById(R.id.addContactsFAbutton);
         recyclerview = findViewById(R.id.recyclerView);
 
+
+
         toAddcontacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,8 +50,6 @@ public class manage_contacts extends AppCompatActivity {
         contact_id = new ArrayList<>();
         contact_userName = new ArrayList<>();
         contact_userContact = new ArrayList<>();
-
-
 
         storeDataInArrays();
 
@@ -67,7 +67,6 @@ public class manage_contacts extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             recreate();
-
         }
     }
 

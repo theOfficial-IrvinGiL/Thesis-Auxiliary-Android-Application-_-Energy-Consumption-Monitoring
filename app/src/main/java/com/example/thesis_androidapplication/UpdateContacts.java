@@ -98,6 +98,6 @@ public class UpdateContacts extends AppCompatActivity {
         builder.create().show();
     }
 
-    //intent to manage contacts
+
 
 }
