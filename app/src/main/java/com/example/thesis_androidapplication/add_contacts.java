@@ -17,7 +17,7 @@ public class add_contacts extends AppCompatActivity {
 
     Button TosaveButton;
 
-
+    MyDatabaseHelper myDB = new MyDatabaseHelper(this);
 
 
     //to determine
@@ -55,29 +55,15 @@ public class add_contacts extends AppCompatActivity {
                         emptyNameWarning();
 
                     }else{
-
-                        /*int contactExistTrigger = 0;
-                        for (String contacts : frmManageContacts.contact_userContact){
-                            if(contacts == scanThisContact){
-                                contactExistTrigger++;
-                            }
-                        }
-
-                        if(contactExistTrigger > 0){
-                            Toast.makeText(add_contacts.this, "Error: The Contact number you have entered already exists!", Toast.LENGTH_SHORT).show();
-                        }else{*/
-                           MyDatabaseHelper myDB = new MyDatabaseHelper(add_contacts.this);
-                            myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
-                                    new_contact_number.getText().toString().trim());
-                       /* }
-                        Cursor cursor = myDB.searchDBforExistingContact(scanThisContact);
+                        //scan the db for existing contacts
+                        Cursor cursor = myDB.searchDBforExistingContact(new_contact_number.getText().toString().trim());
                         if(cursor.getCount() == 0){
                             myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
                                     new_contact_number.getText().toString().trim());
-                             Toast.makeText(this, "No Data Retrieved", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(add_contacts.this, "Error: The Contact number you have entered already exists!", Toast.LENGTH_SHORT).show();
-                        }*/
+                        }else{
+                            Toast.makeText(add_contacts.this, "Contact already exists!", Toast.LENGTH_SHORT).show();
+
+                        }
                     }
 
                 }
@@ -122,5 +108,18 @@ public class add_contacts extends AppCompatActivity {
         //create and show builder
         builder.create().show();
     }
+
+
+    /*void searchThisContactOnDB(String contact){
+        Cursor cursor = myDB.searchDBforExistingContact(contact);
+        if(cursor.getCount() == 0){
+            myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
+                    new_contact_number.getText().toString().trim());
+        }else{
+            Toast.makeText(this, "Contact already exists!", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }*/
 
 }
