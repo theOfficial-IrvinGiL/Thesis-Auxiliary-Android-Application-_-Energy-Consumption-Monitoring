@@ -8,9 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-
 public class update_class extends AppCompatActivity {
+
 
     EditText editKwh, editAmount;
     theDatabase db;
@@ -33,14 +32,15 @@ public class update_class extends AppCompatActivity {
         });
     }
 
-        private void insertInfo (){
-    String kwh = editKwh.getText().toString();
-    String amount = editAmount.getText().toString();
-     boolean result = db.insertingInfo(kwh,amount);
+    private void insertInfo (){
+        String kwh = editKwh.getText().toString();
+        String amount = editAmount.getText().toString();
+        boolean result = db.insertingInfo(kwh,amount);
 
-    if (result)
-        Toast.makeText(this, "Save Successfully", Toast.LENGTH_SHORT).show();
-    else
-        Toast.makeText(this, "Ooops. Save Failed", Toast.LENGTH_SHORT).show();
+        if (result)
+            Toast.makeText(this, "Save Successfully", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Ooops. Save Failed", Toast.LENGTH_SHORT).show();
     }
 }
+

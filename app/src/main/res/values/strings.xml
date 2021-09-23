@@ -136,4 +136,6 @@
     <string name="enter_total_kwh_consumed">Enter Total Kwh Consumed</string>
     <string name="enter_how_many_users__">Enter How Many Users</string>
     <string name="enter_date_of_energy_reading">Enter Date Of Energy Reading</string>
+    <string name="enter_total_amount_used__">Enter Total Amount Used</string>
+    <string name="enter_total_kwh_used__">Enter Total Kwh Used</string>
 </resources>

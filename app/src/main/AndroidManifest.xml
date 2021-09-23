@@ -28,9 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".history_class" />
         <activity android:name=".update_class"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".history_class" />
+
     </application>
 
 </manifest>

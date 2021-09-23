@@ -143,71 +143,66 @@
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/totalUsers"
+        android:id="@+id/kwhEdit"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:background="@drawable/costumize"
+        android:digits="1234567890."
+        android:drawableStart="@drawable/ic_renewable_energy"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="@string/enter_total_kwh_used__"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/amountEdit"
+        android:layout_width="323dp"
+        android:layout_height="56dp"
+        android:background="@drawable/costumize"
+        android:digits="1234567890."
+        android:drawableStart="@drawable/ic_philippine_peso"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="@string/enter_total_amount_used__"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/users"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/enter_how_many_users"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        android:textColor="#020202"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/kwhEdit"
-        android:layout_width="244dp"
-        android:layout_height="48dp"
-        android:hint="@string/enter_total_kwh_consumed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/amountEdit"
-        android:layout_width="242dp"
-        android:layout_height="48dp"
-        android:hint="@string/enter_total_amount_usedby"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="243dp"
-        android:layout_height="48dp"
         android:hint="@string/enter_how_many_users__"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="242dp"
-        android:layout_height="48dp"
-        android:hint="@string/enter_date_of_energy_reading"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintVertical_bias="0.568"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
