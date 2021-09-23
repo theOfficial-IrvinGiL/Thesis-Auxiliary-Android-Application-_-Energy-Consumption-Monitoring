@@ -87,15 +87,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-   /* Cursor searchDBforExistingContact(String thisContact){
-        String query = "SELECT * FROM "+CONTACTS_TABLE_NAME+" WHERE "+CONTACTS_USER_CONTACTS+" = " +thisContact;
+    Cursor searchDBforExistingContact(String thisContact){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;
-    }*/
+        Cursor this_Cursor = db.rawQuery("SELECT * FROM "+ CONTACTS_TABLE_NAME +" WHERE user_contact = '" + thisContact +"'",
+                null);
+         return this_Cursor;
+    }
 
     void updateData (String row_id, String name, String contactNumber){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -122,6 +119,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Contact deleted successfully!", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
 
