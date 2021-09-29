@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class add_contacts extends AppCompatActivity {
 
     EditText new_contact_name, new_contact_number;
@@ -32,6 +34,8 @@ public class add_contacts extends AppCompatActivity {
         new_contact_number = findViewById(R.id.new_contact_number);
 
         TosaveButton =  findViewById(R.id.saveButton);
+
+
 
 
 
@@ -60,6 +64,12 @@ public class add_contacts extends AppCompatActivity {
                         if(cursor.getCount() == 0){
                             myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
                                     new_contact_number.getText().toString().trim());
+
+                            /* snackbar notification */
+                            Snackbar.make(findViewById(android.R.id.content),"Contact added successfully!",Snackbar.LENGTH_SHORT).show();
+
+
+
                         }else{
                             Toast.makeText(add_contacts.this, "Contact already exists!", Toast.LENGTH_SHORT).show();
 

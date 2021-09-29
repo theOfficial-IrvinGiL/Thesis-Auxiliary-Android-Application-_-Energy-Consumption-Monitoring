@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".UpdateContacts"
-            android:label="Update Contacts"
-            android:parentActivityName=".manage_contacts"
+            android:name=".chooseUserContacts_toInclude"
             android:exported="true" />
+        <activity
+            android:name=".UpdateContacts"
+            android:exported="true"
+            android:label="Update Contacts"
+            android:parentActivityName=".manage_contacts" />
         <activity
             android:name=".add_contacts"
             android:exported="true"
