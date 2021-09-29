@@ -16,11 +16,12 @@ public class second extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View clickView) {
         switch (clickView.getId()){
             case R.id.updateButton:
-                Toast.makeText(this,"Still to be developed", Toast.LENGTH_SHORT).show();
+                Intent toAnotherAct =  new Intent(this, chooseUserContacts_toInclude.class);
+                startActivity(toAnotherAct);
                 break;
 
             case R.id.manageContactsButton:
-                Intent toAnotherAct =  new Intent(this, manage_contacts.class);
+                toAnotherAct =  new Intent(this, manage_contacts.class);
                 startActivity(toAnotherAct);
                 break;
 
