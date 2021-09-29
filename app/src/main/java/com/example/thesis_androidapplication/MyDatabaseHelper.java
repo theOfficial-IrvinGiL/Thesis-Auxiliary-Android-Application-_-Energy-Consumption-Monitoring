@@ -6,9 +6,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
@@ -70,7 +73,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed to add contact!", Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(context, "Contact added successfully!", Toast.LENGTH_SHORT).show();
+
+          /*  Toast.makeText(context, "Contact added successfully!", Toast.LENGTH_SHORT).show();*/
+            //snackbar instead of a toast for success notifications
+
+           //initialized at the class where the method is used
+
 
         }
     }

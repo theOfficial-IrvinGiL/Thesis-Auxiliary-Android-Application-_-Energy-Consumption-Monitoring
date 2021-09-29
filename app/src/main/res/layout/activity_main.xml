@@ -18,12 +18,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.975" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/manageEnergy_Button"
         android:layout_width="244dp"
         android:layout_height="63dp"
         android:background="@drawable/general_button_design"
         android:text="@string/main_updateButton"
+        android:textColorLink="@color/teal_200"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +33,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/viewDataHistory_Button"
         android:layout_width="245dp"
         android:layout_height="55dp"
@@ -47,7 +50,8 @@
         app:layout_constraintTop_toBottomOf="@+id/manageEnergy_Button"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/instructionManual_Button"
         android:layout_width="244dp"
         android:layout_height="61dp"
