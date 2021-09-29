@@ -7,12 +7,10 @@
     tools:context=".second">
 
     <androidx.appcompat.widget.AppCompatButton
-
         android:id="@+id/updateButton"
         android:layout_width="210dp"
         android:layout_height="65dp"
         android:background="@mipmap/custom_button1"
-
         android:textAllCaps="false"
         android:textColor="#1692ac"
         android:textSize="17sp"
