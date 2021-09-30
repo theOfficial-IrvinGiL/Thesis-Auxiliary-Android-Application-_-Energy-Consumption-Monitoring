@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".chooseUserContacts_toInclude"
+            android:name=".update_energy"
             android:label="Update Energy Consumption"
             android:exported="true" />
         <activity

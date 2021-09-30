@@ -102,9 +102,12 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="choose_user_contacts_to_include_textview1">Calculating for the rate of energy per killowatt-hour (kwH):</string>
-    <string name="choose_user_contact_to_include_textview2">(Please refer to your electric bill!)</string>
-    <string name="choose_user_to_include_textview3">Enter total KWH used:</string>
+    <string name="update_energy_textview1">Calculating for the rate of energy per killowatt-hour (kwH):</string>
+    <string name="update_energy_textview2">(Please refer to your electric bill!)</string>
+    <string name="update_energy_textview3">Enter total KWH used:</string>
+    <string name="delete_button_value">Delete</string>
+    <string name="update_energy_textview4">Enter total bill amount:</string>
+    <string name="update_energy_textview5">Information from the system:</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="addcontacts_hint_name">Ex. Javan</string>
@@ -113,7 +116,8 @@
     <string name="addcontacts_textview_number">Phone Number:</string>
     <string name="addcontacts_savebutton">Save</string>
     <string name="addcontacts_cancelbutton">Cancel</string>
-    <string name="delete_button_value">Delete</string>
-    <string name="choose_user_contact_to_inlclude_textview4">Enter total bill amount:</string>
+    <string name="update_energy_textview6">(Refer to the system)</string>
+    <string name="upgrade_energy_textview7">Choose the date of energy reading</string>
+
 
 </resources>
