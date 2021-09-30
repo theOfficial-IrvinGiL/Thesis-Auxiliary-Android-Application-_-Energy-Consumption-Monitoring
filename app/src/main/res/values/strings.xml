@@ -117,7 +117,7 @@
     <string name="addcontacts_savebutton">Save</string>
     <string name="addcontacts_cancelbutton">Cancel</string>
     <string name="update_energy_textview6">(Refer to the system)</string>
-    <string name="upgrade_energy_textview7">Choose the date of energy reading</string>
+    <string name="upgrade_energy_textview7">Choose the date of energy reading:</string>
 
 
 </resources>

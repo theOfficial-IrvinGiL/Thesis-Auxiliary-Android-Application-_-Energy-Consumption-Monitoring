@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberDecimal|numberSigned"
         android:minHeight="48dp"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
@@ -71,7 +71,7 @@
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
@@ -104,7 +104,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="92dp"
             android:text="@string/update_energy_textview5"
-            android:textColor="@color/purple_700"
+            android:textColor="#152636"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,24 +127,26 @@
             android:layout_height="46dp"
             android:layout_marginTop="20dp"
             android:text="@string/upgrade_energy_textview7"
-            android:textColor="@color/purple_700"
+            android:textColor="#152636"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <EditText
-            android:focusable="false"
             android:id="@+id/date_picker_dialog"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
+            android:focusable="false"
             android:hint="Select date"
+            android:textColor="#152636"
             app:layout_constraintBottom_toBottomOf="@+id/textView9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/proceed_button"
