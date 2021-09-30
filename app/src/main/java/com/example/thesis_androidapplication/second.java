@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class second extends AppCompatActivity implements View.OnClickListener{
 
@@ -16,7 +15,7 @@ public class second extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View clickView) {
         switch (clickView.getId()){
             case R.id.updateButton:
-                Intent toAnotherAct =  new Intent(this, chooseUserContacts_toInclude.class);
+                Intent toAnotherAct =  new Intent(this, update_energy.class);
                 startActivity(toAnotherAct);
                 break;
 
