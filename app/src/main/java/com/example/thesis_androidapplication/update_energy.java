@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
+import java.text.DecimalFormat;
 
 public class update_energy extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -29,6 +30,12 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
 
     private TextView totalKWH, totalBill;
     private Button proceedButton;
+
+    /*data type declarations*/
+    private double energyCost;
+
+    /*for number value format cause*/
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +71,17 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                 }else if(editTextDate.getText().toString().isEmpty()){
                     displayError_forBlankItem();
                 }else{  /*proceed to next activity if all textview inputs are complete*/
-                    Snackbar.make(findViewById(android.R.id.content),"Proceed to next activity: To be developed!",Snackbar.LENGTH_SHORT).show();
+                    try {
+                        double bill = Double.parseDouble(totalBill.getText().toString());
+                        double energyConsumed = Double.parseDouble(totalKWH.getText().toString());
+
+                        /*pass to calculate method*/
+                        energyCost = calculateEnergyCost(bill, energyConsumed);
+                        Snackbar.make(findViewById(android.R.id.content),"Cost calculated Successfully = " + df2.format(energyCost),Snackbar.LENGTH_SHORT).show();
+                    } catch (Exception e){
+                        Snackbar.make(findViewById(android.R.id.content),"Error encountered during calculation process!",Snackbar.LENGTH_SHORT).show();
+                    }
+
 
                 }
             }
@@ -104,7 +121,7 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                 recreate(); //recreate the whole activity
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancel process", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                Intent thisIntent = new Intent(update_energy.this, second.class);
@@ -118,52 +135,25 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
         return;
     }
 
-    /* override methods for the toolbar option */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.toolbar_option_menu, menu);
-
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            /* to restart the process at the beginning page; in this case here ⏬*/
-            case R.id.restart_process:
-                Intent thisIntent = new Intent(this, update_energy.class);
-                startActivity(thisIntent);
-                break;
-            /* redirect to the second_activity to cancel the process of updating the energy consumption*/
-            case R.id.cancel_process:
-                thisIntent = new Intent(this, second.class);
-                startActivity(thisIntent);
-                break;
-            default: // nothing happens
-                break;
-
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /* end of override methods for the use of the toolbar option */
 
     /*method for error display in case of empty input*/
     protected void displayError_forBlankItem() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Warning: Blank Input");
         builder.setMessage("It seems that you have a blank input. Kindly review and fill up the inputs required.");
-        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
         builder.create().show();
+    }
+
+    /* method for calculating the rate of energy consumption*/
+    private double calculateEnergyCost(double total_bill, double energy_consumed){
+        double energyCost = total_bill / energy_consumed;
+        return energyCost;
     }
 }
