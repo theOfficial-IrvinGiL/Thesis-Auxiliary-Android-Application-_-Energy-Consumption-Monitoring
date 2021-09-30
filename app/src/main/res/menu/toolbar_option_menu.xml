@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/restart_process"
+        android:title="Restart Process"
+        />
+    <item
+        android:id="@+id/cancel_process"
+        android:title="Cancel Process"
+        />
+</menu>
