@@ -98,6 +98,14 @@ public class UpdateContacts extends AppCompatActivity {
         builder.create().show();
     }
 
+    /* method to override the back button to return to parent*/
+    @Override
+    public void onBackPressed() {
+        finish();
+
+        return;
+    }
+
 
 
 }
