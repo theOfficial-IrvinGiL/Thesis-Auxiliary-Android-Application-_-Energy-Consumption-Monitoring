@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#044553</color>        //color for the action bar
-    <color name="purple_700">#000000</color>        //color for the top notification bar on top of the action bar
-    <color name="teal_200">#259FAF</color>      //color for the floating action button background
+    <color name="actionbar_color">#044553</color>        //color for the action bar
+    <color name="topbar">#001e2a</color>        //color for the top notification bar on top of the action bar
+    <color name="floatingactionbar_color">#007080</color>      //color for the floating action button background
     <color name="teal_700">#FF018786</color>
     <color name="black">#FFFCFC</color>         //color for the foreground of the floating action button
     <color name="white">#FFFFFFFF</color>       //color for the layout background
+    <color name ="custom_background">#e1e2e1</color>  <!--custom color for background-->
 </resources>

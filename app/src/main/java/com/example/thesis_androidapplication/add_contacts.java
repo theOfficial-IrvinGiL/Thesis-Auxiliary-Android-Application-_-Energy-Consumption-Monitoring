@@ -119,17 +119,11 @@ public class add_contacts extends AppCompatActivity {
         builder.create().show();
     }
 
+    /* method to override the back button to return to parent*/
+    @Override
+    public void onBackPressed() {
+        finish();
 
-    /*void searchThisContactOnDB(String contact){
-        Cursor cursor = myDB.searchDBforExistingContact(contact);
-        if(cursor.getCount() == 0){
-            myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
-                    new_contact_number.getText().toString().trim());
-        }else{
-            Toast.makeText(this, "Contact already exists!", Toast.LENGTH_SHORT).show();
-
-        }
-
-    }*/
-
+        return;
+    }
 }
