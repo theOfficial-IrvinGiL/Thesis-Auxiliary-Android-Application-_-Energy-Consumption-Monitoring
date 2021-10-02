@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".update_energy"
-            android:label="Update Energy Consumption"
+            android:name=".readingKWH_sendingSMS"
             android:exported="true" />
+        <activity
+            android:name=".update_energy"
+            android:exported="true"
+            android:label="Update Energy Consumption" />
         <activity
             android:name=".UpdateContacts"
             android:exported="true"

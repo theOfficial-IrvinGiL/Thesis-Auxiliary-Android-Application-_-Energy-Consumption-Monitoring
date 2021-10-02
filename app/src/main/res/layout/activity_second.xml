@@ -28,7 +28,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/floatingactionbar_color"
+            android:background="@color/design_default_color_secondary_variant"
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
@@ -44,9 +44,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Update Enegy Consumption"
+                android:text="Update Energy Consumption"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -73,7 +73,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/floatingactionbar_color"
+            android:background="@color/design_default_color_secondary_variant"
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
