@@ -8,20 +8,6 @@
     android:background="@color/custom_background"
     tools:context=".readingKWH_sendingSMS">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_baseline_forward_to_inbox_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
@@ -43,9 +29,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/general_button_design"
-            android:text="add to pool"
+            android:text="Calcuate and Send sms "
             android:textSize="12sp"
-            app:icon="@drawable/ic_baseline_add_shopping_cart_24"
+            app:icon="@drawable/ic_baseline_forward_to_inbox_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -84,6 +70,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
+
         android:id="@+id/materialCardView"
         android:layout_width="0dp"
         android:layout_height="225dp"
@@ -91,7 +78,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:checkable="true"
-        android:clickable="true"
+        android:clickable="false"
         android:focusable="true"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,17 +163,21 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <ListView
-        android:id="@+id/choose_contacts_toInclude_Listview"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0">
+        
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"/>
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

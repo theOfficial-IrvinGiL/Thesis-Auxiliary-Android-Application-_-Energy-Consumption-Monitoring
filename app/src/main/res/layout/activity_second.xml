@@ -8,7 +8,7 @@
     tools:context=".second">
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/update_energy_card"
         android:layout_width="318dp"
         android:layout_height="266dp"
@@ -51,9 +51,9 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/manage_contacts_card"
         android:layout_width="318dp"
         android:layout_height="266dp"
@@ -96,6 +96,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

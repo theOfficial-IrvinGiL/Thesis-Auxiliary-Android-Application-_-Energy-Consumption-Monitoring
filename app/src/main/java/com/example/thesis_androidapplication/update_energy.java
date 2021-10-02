@@ -45,8 +45,8 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_energy);
 
+        /*initialize object and assign the IDs*/
         proceedButton =findViewById(R.id.proceed_button);
-
         totalKWH = findViewById(R.id.input_totalKWH_used);
         totalBill = findViewById(R.id.input_totalBill_amount);
 
@@ -60,6 +60,7 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
 
         datePickerDialog = new DatePickerDialog(update_energy.this, this, year, month, day);
         datePickerDialog.setCancelable(true);
+        /*date picker codes end here*/
 
         /*proceed-button onclicklistener*/
         proceedButton.setOnClickListener(new View.OnClickListener() {
@@ -78,22 +79,30 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                         double bill = Double.parseDouble(totalBill.getText().toString());
                         double energyConsumed = Double.parseDouble(totalKWH.getText().toString());
 
+                        /* get the date from the edit text view*/
                         dateText = findViewById(R.id.date_picker_dialog);
 
                         /*pass to calculate method*/
                         energyCost = calculateEnergyCost(bill, energyConsumed);
                         Snackbar.make(findViewById(android.R.id.content),"Cost calculated Successfully = " + df2.format(energyCost),Snackbar.LENGTH_SHORT).show();
                         Intent thisIntent = new Intent(getApplicationContext(), readingKWH_sendingSMS.class);
+                        Bundle bundle =  new Bundle();
 
+
+                        /*initialize the values, for the program to easily understand*/
                         String cost = df2.format(energyCost), date = dateText.getText().toString().trim();
 
-                        /*set the intent information*/
-                        thisIntent.putExtra("energy_cost",cost);
-                        thisIntent.putExtra("reading_date", date);
 
+                       /* trying bundle to send data*. Note: it worked yeah/*/
+                        bundle.putString("energy_cost",cost);
+                        bundle.putString("reading_date",date);
+
+                        thisIntent.putExtras(bundle);
 
 
                         /*start the next activity*/
+
+
                         startActivity(thisIntent);
 
                     } catch (Exception e){
@@ -104,21 +113,21 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                 }
             }
         });
-
-        /*date picker onclick listener*/
+       /* date picker onclick listener*/
         editTextDate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 datePickerDialog.show();
             }
         });
-        /* code for the datepickerDialog ends here*/
+         /*code for the datepickerDialog ends here*/
+
 
 
 
     }
 
-    /* method used along with the datepickerdialog function*/
+     /*method used along with the datepickerdialog function*/
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month+=1;

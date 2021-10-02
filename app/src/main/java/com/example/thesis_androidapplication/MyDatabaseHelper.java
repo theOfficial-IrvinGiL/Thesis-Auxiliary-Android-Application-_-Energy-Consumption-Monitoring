@@ -83,7 +83,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
+    /*method to load the search and coordinate with loading the contacts data from
+    * the database*/
     Cursor readAllData(){
         String query = "SELECT * FROM " + CONTACTS_TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -95,6 +96,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /*method to search for existing contact in the database*/
     Cursor searchDBforExistingContact(String thisContact){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor this_Cursor = db.rawQuery("SELECT * FROM "+ CONTACTS_TABLE_NAME +" WHERE user_contact = '" + thisContact +"'",
@@ -102,6 +104,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
          return this_Cursor;
     }
 
+    /*method for updating the chosen contact (update or edit)*/
     void updateData (String row_id, String name, String contactNumber){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();  //initialize content value
@@ -118,6 +121,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+    /*method for deleting the chosen contact */
     void deleteContact(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(CONTACTS_TABLE_NAME, "user_id=?", new String[]{row_id});
@@ -126,6 +130,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Contact deleted successfully!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /*method to search for the contact names and load them into
+    * the listview of the update contacts*/
+    Cursor loadContactNames_forEnergyUpdate(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor this_Cursor = db.rawQuery("SELECT user_name FROM "+ CONTACTS_TABLE_NAME ,  null);
+        return this_Cursor;
     }
 
 
