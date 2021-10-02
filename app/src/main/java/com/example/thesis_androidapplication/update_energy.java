@@ -37,6 +37,9 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
     /*for number value format cause*/
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
+    /*declaration for getting the date value*/
+    EditText dateText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,9 +78,24 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                         double bill = Double.parseDouble(totalBill.getText().toString());
                         double energyConsumed = Double.parseDouble(totalKWH.getText().toString());
 
+                        dateText = findViewById(R.id.date_picker_dialog);
+
                         /*pass to calculate method*/
                         energyCost = calculateEnergyCost(bill, energyConsumed);
                         Snackbar.make(findViewById(android.R.id.content),"Cost calculated Successfully = " + df2.format(energyCost),Snackbar.LENGTH_SHORT).show();
+                        Intent thisIntent = new Intent(getApplicationContext(), readingKWH_sendingSMS.class);
+
+                        String cost = df2.format(energyCost), date = dateText.getText().toString().trim();
+
+                        /*set the intent information*/
+                        thisIntent.putExtra("energy_cost",cost);
+                        thisIntent.putExtra("reading_date", date);
+
+
+
+                        /*start the next activity*/
+                        startActivity(thisIntent);
+
                     } catch (Exception e){
                         Snackbar.make(findViewById(android.R.id.content),"Error encountered during calculation process!",Snackbar.LENGTH_SHORT).show();
                     }
