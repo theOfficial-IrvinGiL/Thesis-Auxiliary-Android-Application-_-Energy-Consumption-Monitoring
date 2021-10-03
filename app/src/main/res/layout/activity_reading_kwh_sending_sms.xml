@@ -31,6 +31,7 @@
             android:background="@drawable/general_button_design"
             android:text="Calculate and Send"
             android:textSize="12sp"
+            android:textStyle="bold"
             app:icon="@drawable/ic_baseline_forward_to_inbox_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
@@ -79,13 +80,14 @@
 
         android:id="@+id/materialCardView"
         android:layout_width="0dp"
-        android:layout_height="225dp"
+        android:layout_height="267dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:checkable="true"
         android:clickable="false"
         android:focusable="true"
+        app:cardCornerRadius="20dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,9 +103,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="61dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="24dp"
                 android:hint="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,13 +122,12 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/view_contact"
-
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="61dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="24dp"
                 android:hint="Contact number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -142,15 +143,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextField3"
+                android:id="@+id/energy_consumption"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="61dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="24dp"
                 android:hint="Energy consumption (kwh)"
-                app:helperText="Required"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_contact"
@@ -159,10 +159,41 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:inputType="numberDecimal|numberSigned"/>
+                    android:inputType="numberDecimal|numberSigned"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/energy_consumption">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/clear_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/custome_button2"
+                    android:elevation="6dp"
+                    android:shadowColor="@color/custom_background"
+                    android:text="clear"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

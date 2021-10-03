@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +40,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     private String chosen_name, chosen_contact;
 
     /*button object initialized*/
-    Button calculate_and_send;
+    Button calculate_and_send, clear_contents;
 
 
     @Override
@@ -50,6 +52,10 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         displayCost = findViewById(R.id.display_cost_textview);
         display_name = findViewById(R.id.view_name);
         display_contact = findViewById(R.id.view_contact);
+        calculate_and_send = findViewById(R.id.calcAndSend_SMS);
+
+        /*buttons*/
+        clear_contents = findViewById(R.id.clear_contents);
         calculate_and_send = findViewById(R.id.calcAndSend_SMS);
 
         /*initializing bundle*/
@@ -110,7 +116,14 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         });
 
 
-
+        /*listener to clear contents on the edittext view*/
+        clear_contents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                display_name.getEditText().setText("");
+                display_contact.getEditText().setText("");
+            }
+        });
 
 
 
