@@ -140,7 +140,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return this_Cursor;
     }
 
-
+    /*helper method for loading the contact number*/
+    Cursor loadUserContactNumber(String user_name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor this_Cursor = db.rawQuery("SELECT user_contact FROM "+ CONTACTS_TABLE_NAME +
+                " WHERE user_name = '"+user_name+"'",  null);
+        return this_Cursor;
+    }
 
 
 
