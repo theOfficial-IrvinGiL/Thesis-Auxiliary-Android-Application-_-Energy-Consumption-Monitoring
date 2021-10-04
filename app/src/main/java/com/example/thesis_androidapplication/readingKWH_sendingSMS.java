@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     /* initialized to be used for displaying the cost calculated from the last activity*/
     protected TextView displayCost;
 
-   TextInputLayout display_name, display_contact;
+   TextInputLayout display_name, display_contact, energyConsumption_input;
 
 
     /* used for getting the date from the Intent on last activity*/
@@ -45,6 +46,9 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     /*button object initialized*/
     Button calculate_and_send, clear_contents;
 
+    /*used for formatting double values*/
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,8 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         displayCost = findViewById(R.id.display_cost_textview);
         display_name = findViewById(R.id.view_name);
         display_contact = findViewById(R.id.view_contact);
-        calculate_and_send = findViewById(R.id.calcAndSend_SMS);
+        energyConsumption_input = findViewById(R.id.energy_consumption);
+
 
         /*buttons*/
         clear_contents = findViewById(R.id.clear_contents);
@@ -115,6 +120,48 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(display_name.getEditText().getText().toString().trim().isEmpty()){
+                    missingInputAlert();
+                }else if(display_contact.getEditText().getText().toString().trim().isEmpty()){
+                    missingInputAlert();
+                }else if(energyConsumption_input.getEditText().getText().toString().trim().isEmpty()){
+                    missingInputAlert();
+
+                }else {
+                    try {
+                        /*parsing values to double*/
+                        Double energy_cost = Double.parseDouble(displayCost.getText().toString()),
+                                energy_consumed = Double.parseDouble(energyConsumption_input.getEditText().getText().toString().trim());
+
+                        /*call the calculate method
+                         * and also format the product to the nearest tenths decimal*/
+                        String billToPay = df2.format(calculate_andSave_data(energy_cost, energy_consumed));
+
+                        myDB.updateEnergyConsumptionDB(reading_date,
+                                display_name.getEditText().getText().toString().trim(),
+                                energyConsumption_input.getEditText().getText().toString().trim(),
+                                displayCost.getText().toString(),
+                                billToPay);
+
+                        /*if it is successful then remove the name from the listview */
+                        for(int index = 0; index < list.size(); index++){
+                            String removeName =  display_name.getEditText().getText().toString().trim();
+                            if(list.get(index).equals(removeName)){
+                                list.remove(index);
+                                arrayAdapter.notifyDataSetChanged(); //notify the list and refresh it
+                            }
+                            else{ //show error message
+                                Toast.makeText(getApplicationContext(), "error in removing item in listview", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+
+                    } catch (Exception e) {
+
+                        Toast.makeText(getApplicationContext(), "Error in input values", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }
         });
 
@@ -147,7 +194,28 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.home:
-                Toast.makeText(this, "selected home", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "selected home", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("You pressed the home button! You are about to leave this activity and end the updating process.");
+                builder.setPositiveButton("Leave", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        /*goes to the main activity*/
+                            Intent thisIntent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(thisIntent);
+                    }
+                });
+                builder.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        /*does nothing*/
+
+                    }
+                });
+
+                //show confirm dialog
+                builder.create().show();
+
                 break;
             default:
                 break;
@@ -185,13 +253,37 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
             }
         });
 
+
         //show confirm dialog
         builder.create().show();
 
         return;
     }
 
+    Double calculate_andSave_data(double energyCost, double energyConsumed){
+        double returnThis = 0;
+                returnThis = energyCost * energyConsumed;
+        return returnThis;
+    }
 
+
+    protected void missingInputAlert(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Missing Input");
+        builder.setMessage("It seems that you have a missing input! Please fill the required information on the input fields.");
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+
+        //show confirm dialog
+        builder.create().show();
+
+
+    }
 
 
 
