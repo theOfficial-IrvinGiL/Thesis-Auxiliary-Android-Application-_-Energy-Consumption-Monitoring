@@ -159,6 +159,35 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 " WHERE " + CONTACTS_USERNAME + " = '" +user_name+"'",  null);
     }
 
+    /*method for updating the data of energy consumption in the database */
+    void updateEnergyConsumptionDB(String date, String userName, String energyConsumed, String energyCost, String billToPay){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();  //initialize content value
+
+        cv. put(READING_DATE, date);
+        cv. put(CONTACTS_USERNAME, userName);
+        cv.put(ENERGY_CONSUMED, energyConsumed);
+        cv. put(ENERGY_COST, energyCost);
+        cv. put(BILL_TO_PAY, billToPay);
+
+        long result = db.insert(ENERGY_HISTORY_TABLE, null, cv);
+        if (result == -1){
+            Toast.makeText(context, "Failed to add contact!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Data save to database", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+
+
+    /*helper method for loading the date of consumption history from the database to the
+    * listview*/
+    Cursor getHistoryDates(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT DISTINCT " + READING_DATE + " FROM " + ENERGY_HISTORY_TABLE, null);
+    }
 
 
 

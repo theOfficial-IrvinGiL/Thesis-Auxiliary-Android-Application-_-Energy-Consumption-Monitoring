@@ -25,7 +25,8 @@ import android.widget.Toast;
 
                         break;
                     case R.id.viewDataHistory_Button:
-                        Toast.makeText(this,"You have selected view data history",Toast.LENGTH_SHORT).show();
+                        i =new Intent(this, ViewDataHistoryDates.class);
+                        startActivity(i);
 
                         break;
                     case R.id.instructionManual_Button:
