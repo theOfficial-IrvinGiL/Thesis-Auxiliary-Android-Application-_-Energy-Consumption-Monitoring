@@ -22,8 +22,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     //for contacts database information
     private static final String CONTACTS_TABLE_NAME = "Contacts_Table";
     private static final String CONTACTS_COLUMN_ID = "user_id";
-    private static final String USER_NAME = "user_name";
-    private static final String CONTACTS_USERNAME = USER_NAME;
+    private static final String CONTACTS_USERNAME = "user_name";
     private static final String CONTACTS_USER_CONTACTS = "user_contact";
 
     private static final String ENERGY_HISTORY_TABLE = "EnergyHistory_Table";
@@ -52,26 +51,31 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         //database for contacts
 
+        /*for database table creation*/
         String[] querries = {
-                "CREATE "
+                "CREATE TABLE " + CONTACTS_TABLE_NAME + " (" + CONTACTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CONTACTS_USERNAME + " TEXT, " + CONTACTS_USER_CONTACTS + " TEXT)",
+                "CREATE TABLE " + ENERGY_HISTORY_TABLE + " (" + READING_DATE + " TEXT, " + CONTACTS_USERNAME + " TEXT, " + ENERGY_CONSUMED + " TEXT, " + ENERGY_COST + " TEXT, " + BILL_TO_PAY + " TEXT)"
         };
 
-        String query = "CREATE TABLE " + CONTACTS_TABLE_NAME +
-                " (" + CONTACTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + CONTACTS_USERNAME + " TEXT, " + CONTACTS_USER_CONTACTS + " TEXT)";
 
-        db.execSQL(query);
-
-        query = "CREATE TABLE " + ENERGY_HISTORY_TABLE + " (" + READING_DATE + " TEXT, " + USER_NAME + " TEXT, "
-                + ENERGY_CONSUMED + " TEXT, " + ENERGY_COST + " TEXT, " + BILL_TO_PAY + " TEXT)";
-        db.execSQL(query);
+        /*for loop is used to execute the query on the array above*/
+        for(String thisQuery: querries){
+            db.execSQL(thisQuery);
+        }
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + CONTACTS_TABLE_NAME);
-        onCreate(db);
+
+        /*for loop is also used to scan and drop the creation of a new table if the tables have already existed
+        * this is to avoid the redundant creation of tables in the database*/
+        String[] scanTables = {CONTACTS_TABLE_NAME, ENERGY_HISTORY_TABLE};
+        for(String executeThis: scanTables){
+            db.execSQL("DROP TABLE IF EXISTS " + executeThis);
+            onCreate(db);
+        }
+
     }
 
     //add contact
@@ -87,15 +91,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         if (result == -1){
             Toast.makeText(context, "Failed to add contact!", Toast.LENGTH_SHORT).show();
         }
-        else{
+       /* else{
+            *//*display nothing*//*
 
-          /*  Toast.makeText(context, "Contact added successfully!", Toast.LENGTH_SHORT).show();*/
-            //snackbar instead of a toast for success notifications
-
-           //initialized at the class where the method is used
-
-
-        }
+        }*/
     }
 
     /*method to load the search and coordinate with loading the contacts data from
@@ -114,9 +113,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     /*method to search for existing contact in the database*/
     Cursor searchDBforExistingContact(String thisContact){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor this_Cursor = db.rawQuery("SELECT * FROM "+ CONTACTS_TABLE_NAME +" WHERE user_contact = '" + thisContact +"'",
+        return db.rawQuery("SELECT * FROM "+ CONTACTS_TABLE_NAME +" WHERE user_contact = '" + thisContact +"'",
                 null);
-         return this_Cursor;
     }
 
     /*method for updating the chosen contact (update or edit)*/
@@ -151,16 +149,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     * the listview of the update contacts*/
     Cursor loadContactNames_forEnergyUpdate(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor this_Cursor = db.rawQuery("SELECT " + USER_NAME + " FROM " + CONTACTS_TABLE_NAME ,  null);
-        return this_Cursor;
+        return db.rawQuery("SELECT " + CONTACTS_USERNAME + " FROM " + CONTACTS_TABLE_NAME ,  null);
     }
 
     /*helper method for loading the contact number*/
     Cursor loadUserContactNumber(String user_name){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor this_Cursor = db.rawQuery("SELECT user_contact FROM "+ CONTACTS_TABLE_NAME +
-                " WHERE " + USER_NAME + " = '" +user_name+"'",  null);
-        return this_Cursor;
+        return db.rawQuery("SELECT user_contact FROM "+ CONTACTS_TABLE_NAME +
+                " WHERE " + CONTACTS_USERNAME + " = '" +user_name+"'",  null);
     }
 
 
