@@ -22,9 +22,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     //for contacts database information
     private static final String CONTACTS_TABLE_NAME = "Contacts_Table";
     private static final String CONTACTS_COLUMN_ID = "user_id";
-    private static final String CONTACTS_USERNAME = "user_name";
+    private static final String USER_NAME = "user_name";
+    private static final String CONTACTS_USERNAME = USER_NAME;
     private static final String CONTACTS_USER_CONTACTS = "user_contact";
 
+    private static final String ENERGY_HISTORY_TABLE = "EnergyHistory_Table";
+    private static final String READING_DATE = "reading_date";
+    private static final String ENERGY_CONSUMED = "energy_consumed";
+    private static final String ENERGY_COST = "energy_cost";
+    private static final String BILL_TO_PAY = "bill_to_pay";
 
 
     private Context context;
@@ -45,10 +51,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         * */
 
         //database for contacts
+
+        String[] querries = {
+                "CREATE "
+        };
+
         String query = "CREATE TABLE " + CONTACTS_TABLE_NAME +
                 " (" + CONTACTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CONTACTS_USERNAME + " TEXT, " + CONTACTS_USER_CONTACTS + " TEXT)";
 
+        db.execSQL(query);
+
+        query = "CREATE TABLE " + ENERGY_HISTORY_TABLE + " (" + READING_DATE + " TEXT, " + USER_NAME + " TEXT, "
+                + ENERGY_CONSUMED + " TEXT, " + ENERGY_COST + " TEXT, " + BILL_TO_PAY + " TEXT)";
         db.execSQL(query);
 
     }
@@ -136,7 +151,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     * the listview of the update contacts*/
     Cursor loadContactNames_forEnergyUpdate(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor this_Cursor = db.rawQuery("SELECT user_name FROM "+ CONTACTS_TABLE_NAME ,  null);
+        Cursor this_Cursor = db.rawQuery("SELECT " + USER_NAME + " FROM " + CONTACTS_TABLE_NAME ,  null);
         return this_Cursor;
     }
 
@@ -144,7 +159,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     Cursor loadUserContactNumber(String user_name){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor this_Cursor = db.rawQuery("SELECT user_contact FROM "+ CONTACTS_TABLE_NAME +
-                " WHERE user_name = '"+user_name+"'",  null);
+                " WHERE " + USER_NAME + " = '" +user_name+"'",  null);
         return this_Cursor;
     }
 

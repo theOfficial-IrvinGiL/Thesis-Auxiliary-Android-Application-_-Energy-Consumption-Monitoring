@@ -1,18 +1,21 @@
 package com.example.thesis_androidapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -130,6 +133,32 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
 
     }
 
+
+    /*code for the action toolbar*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home:
+                Toast.makeText(this, "selected home", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    /*end of code for action toolbar*/
+
+    /*method for the function on loading the contact names form the database
+    * into the listview of the activity*/
     private void loadContact_Names(){
         //initialize cursor to use in loading the data from the sql lite database
         Cursor cursor = myDB.loadContactNames_forEnergyUpdate();
@@ -142,5 +171,29 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         }
 
     }
+
+    /*method for the back key press and prevent jumbling of activity*/
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("You have pressed the back button! You are currently in the " +
+                "middle of *Updating the Energy Consumption* process. If want to go to the home activity, press the home icon above.");
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        //show confirm dialog
+        builder.create().show();
+
+        return;
+    }
+
+
+
+
+
 
 }
