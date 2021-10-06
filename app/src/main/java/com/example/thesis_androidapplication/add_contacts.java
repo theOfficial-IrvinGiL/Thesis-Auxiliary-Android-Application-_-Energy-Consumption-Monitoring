@@ -3,6 +3,7 @@ package com.example.thesis_androidapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 public class add_contacts extends AppCompatActivity {
+
+    Activity activity = add_contacts.this;
 
     EditText new_contact_name, new_contact_number;
 
@@ -65,9 +68,12 @@ public class add_contacts extends AppCompatActivity {
                             myDB.add_thiscontact(new_contact_name.getText().toString().trim(),
                                     new_contact_number.getText().toString().trim());
 
-                            /* snackbar notification */
-                            Snackbar.make(findViewById(android.R.id.content),"Contact added successfully!",Snackbar.LENGTH_SHORT).show();
+                            /* snackbar and toast notification */
+                           /* Snackbar.make(findViewById(android.R.id.content),"Contact added successfully!",Snackbar.LENGTH_SHORT).show();*/
+                            Toast.makeText(getApplicationContext(), "Contact added successfully", Toast.LENGTH_SHORT).show();
+                            /*set the result code for the parent activity to identify*/
 
+                            finish();
 
 
                         }else{

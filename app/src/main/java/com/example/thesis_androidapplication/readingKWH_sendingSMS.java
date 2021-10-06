@@ -155,9 +155,11 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
                             }
                         }
 
+                        /*call the method to clear the edit text*/
+                        clearfields();
+
 
                     } catch (Exception e) {
-
                         Toast.makeText(getApplicationContext(), "Error in input values", Toast.LENGTH_SHORT).show();
                     }
 
@@ -170,8 +172,8 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         clear_contents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                display_name.getEditText().setText("");
-                display_contact.getEditText().setText("");
+                /*calls the clearfields method*/
+                clearfields();
             }
         });
 
@@ -182,7 +184,6 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
 
 
     /*code for the action toolbar*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -225,6 +226,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     }
     /*end of code for action toolbar*/
 
+
     /*method for the function on loading the contact names form the database
     * into the listview of the activity*/
     private void loadContact_Names(){
@@ -260,13 +262,14 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         return;
     }
 
+    /*method that calculates the cost and values when the calc and send button is pressed*/
     Double calculate_andSave_data(double energyCost, double energyConsumed){
         double returnThis = 0;
                 returnThis = energyCost * energyConsumed;
         return returnThis;
     }
 
-
+    /*alert method that is triggered when there is no input on the energy consumption edittext*/
     protected void missingInputAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Missing Input");
@@ -282,6 +285,14 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         //show confirm dialog
         builder.create().show();
 
+
+    }
+
+    /*method that has functions to clear the edit text*/
+    void clearfields(){
+        display_name.getEditText().setText("");
+        display_contact.getEditText().setText("");
+        energyConsumption_input.getEditText().setText("");
 
     }
 
