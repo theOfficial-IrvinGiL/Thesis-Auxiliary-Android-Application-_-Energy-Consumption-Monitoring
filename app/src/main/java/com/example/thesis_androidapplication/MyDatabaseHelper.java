@@ -172,10 +172,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(ENERGY_HISTORY_TABLE, null, cv);
         if (result == -1){
-            Toast.makeText(context, "Failed to add contact!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Failed update user!", Toast.LENGTH_SHORT).show();
+
         }
         else{
-            Toast.makeText(context, "Data save to database", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(context, "Data save to database", Toast.LENGTH_SHORT).show();*/
+            /*do nothing*/
         }
 
 
