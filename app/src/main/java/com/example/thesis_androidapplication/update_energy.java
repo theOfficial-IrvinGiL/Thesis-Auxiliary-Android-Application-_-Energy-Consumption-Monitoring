@@ -102,31 +102,46 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
                             double bill = Double.parseDouble(totalBill.getText().toString());
                             double energyConsumed = Double.parseDouble(totalKWH.getText().toString());
 
-                            /* get the date from the edit text view*/
-                            dateText = findViewById(R.id.date_picker_dialog);
 
-                            /*pass to calculate method*/
-                            energyCost = calculateEnergyCost(bill, energyConsumed);
-                            Snackbar.make(findViewById(android.R.id.content),"Cost calculated Successfully = " + df2.format(energyCost),Snackbar.LENGTH_SHORT).show();
-                            Intent thisIntent = new Intent(getApplicationContext(), readingKWH_sendingSMS.class);
-                            Bundle bundle =  new Bundle();
+                            if (bill < energyConsumed){
+                                AlertDialog.Builder builder = new AlertDialog.Builder(update_energy.this);
+                                builder.setTitle("Warning: Review your input!");
+                                builder.setMessage("It seems that the total bill input is less than the energy consumed. Kindly review your inputs!");
+                                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                });
+
+                                //show confirm dialog
+                                builder.create().show();
+                            }
+                            else{/* get the date from the edit text view*/
+                                dateText = findViewById(R.id.date_picker_dialog);
+
+                                /*pass to calculate method*/
+                                energyCost = calculateEnergyCost(bill, energyConsumed);
+                                Snackbar.make(findViewById(android.R.id.content),"Cost calculated Successfully = " + df2.format(energyCost),Snackbar.LENGTH_SHORT).show();
+                                Intent thisIntent = new Intent(getApplicationContext(), readingKWH_sendingSMS.class);
+                                Bundle bundle =  new Bundle();
 
 
-                            /*initialize the values, for the program to easily understand*/
-                            String cost = df2.format(energyCost), date = dateText.getText().toString().trim();
+                                /*initialize the values, for the program to easily understand*/
+                                String cost = df2.format(energyCost), date = dateText.getText().toString().trim();
 
 
-                            /* trying bundle to send data*. Note: it worked yeah/*/
-                            bundle.putString("energy_cost",cost);
-                            bundle.putString("reading_date",date);
+                                /* trying bundle to send data*. Note: it worked yeah/*/
+                                bundle.putString("energy_cost",cost);
+                                bundle.putString("reading_date",date);
 
-                            thisIntent.putExtras(bundle);
-
-
-                            /*start the next activity*/
+                                thisIntent.putExtras(bundle);
 
 
-                            startActivity(thisIntent);
+                                /*start the next activity*/
+
+
+                                startActivity(thisIntent);}
 
                         } catch (Exception e){
                             Snackbar.make(findViewById(android.R.id.content),"Error encountered during calculation process!",Snackbar.LENGTH_SHORT).show();
@@ -215,6 +230,7 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
         return energyCost;
     }
 
+    /*scan the database if the input date already exists*/
     private boolean does_DateExist (String date){
         boolean doesDateExist = false;
         Cursor cursor = myDB.getEnergyData(date);
@@ -226,6 +242,7 @@ public class update_energy extends AppCompatActivity implements DatePickerDialog
 
         return doesDateExist;
     }
+
 
 
 

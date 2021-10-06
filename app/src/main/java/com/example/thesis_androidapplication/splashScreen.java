@@ -8,16 +8,16 @@ import android.os.Handler;
 import android.view.Menu;
 
 public class splashScreen extends AppCompatActivity {
-
+    /*this is a splashscreen activity*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-
+        /*hides the actionbar*/
         getSupportActionBar().hide();
-       /* new Handler()*/
 
+        /*code to handle the splash screen timming and executes the next activity in 2 seconds*/
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {

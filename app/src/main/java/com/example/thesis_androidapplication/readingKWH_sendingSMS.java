@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DecimalFormat;
@@ -95,13 +96,13 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
                 display_name.getEditText().setText(chosen_name); //display the name in the textview
 
                 /*display toast message*/
-                Toast.makeText(readingKWH_sendingSMS.this, "Selected: "+chosen_name, Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(readingKWH_sendingSMS.this, "Selected: "+chosen_name, Toast.LENGTH_SHORT).show();*/
 
                 /*code to retrieve the corresponding contact number of the
                 * chosen name in the database*/
                 Cursor cursor = myDB.loadUserContactNumber(chosen_name);
                 if(cursor.getCount() == 0){  //if the cursor is empty, display toast message
-                    Toast.makeText(getApplicationContext(), "No contact names retrieved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No contacts retrieved", Toast.LENGTH_SHORT).show();
                 }else{
                     while(cursor.moveToNext()){ //if cursor has data then add to the variable to be displayed
                         chosen_contact = cursor.getString(0);
@@ -149,10 +150,13 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
                             if(list.get(index).equals(removeName)){
                                 list.remove(index);
                                 arrayAdapter.notifyDataSetChanged(); //notify the list and refresh it
+                                Snackbar.make(findViewById(android.R.id.content),"Energy consumption updated and sms sent!",Snackbar.LENGTH_SHORT).show();
+
+                                /*ps wa pa ni send sms na code*/
+
+                                break;
                             }
-                            else{ //show error message
-                                Toast.makeText(getApplicationContext(), "error in removing item in listview", Toast.LENGTH_SHORT).show();
-                            }
+                            
                         }
 
                         /*call the method to clear the edit text*/
