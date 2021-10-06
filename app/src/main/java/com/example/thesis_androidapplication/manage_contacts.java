@@ -13,10 +13,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class manage_contacts extends AppCompatActivity {
+    /*instantiate the activity context*/
+    Activity activity = manage_contacts.this;
+
     RecyclerView recyclerview;
     FloatingActionButton toAddcontacts;
 
@@ -40,7 +44,7 @@ public class manage_contacts extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent thisIntent =new Intent(manage_contacts.this, add_contacts.class);
-                startActivity(thisIntent);
+                activity.startActivityForResult(thisIntent,1);
             }
          });
 
@@ -65,9 +69,11 @@ public class manage_contacts extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
-            recreate();
-        }
+            if(requestCode >= 1 ){recreate();}
+        /*code to determine what message to be displayed when the child activity finished() is executed*/
+
+
+
     }
 
 

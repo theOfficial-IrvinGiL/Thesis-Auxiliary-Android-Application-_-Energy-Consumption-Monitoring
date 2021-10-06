@@ -3,6 +3,7 @@ package com.example.thesis_androidapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class UpdateContacts extends AppCompatActivity {
+
+    /*instantiate the activity*/
+    Activity activity = UpdateContacts.this;
 
     EditText new_contactName, new_contactNumber;
     Button update_button, delete_button;
@@ -40,6 +44,8 @@ public class UpdateContacts extends AppCompatActivity {
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateContacts.this);
                 myDB.updateData(id, userName, contactNumber);
+
+                activity.setResult(2);
                 finish();
 
             }
@@ -75,7 +81,7 @@ public class UpdateContacts extends AppCompatActivity {
         }
     }
 
-    // showing confirm dialog
+    // showing confirm dialog on clicking the delete button
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete Contact: "+userName+" ?");
@@ -85,6 +91,9 @@ public class UpdateContacts extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateContacts.this);
                 myDB.deleteContact(id);
+
+                /*set the resultcode*/
+                activity.setResult(3);
                 finish();
             }
         });

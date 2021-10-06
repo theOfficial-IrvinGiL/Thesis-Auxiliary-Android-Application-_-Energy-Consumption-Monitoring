@@ -10,11 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
+            android:name=".splashScreen"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".viewDataConsumption"
+            android:exported="true"
+            android:label="Energy Consumption Data"
+            android:parentActivityName=".ViewDataHistoryDates"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ViewDataHistoryDates"
             android:exported="true"
             android:label="Consumption History"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".readingKWH_sendingSMS"
             android:exported="true"
@@ -55,11 +71,7 @@
             android:label="Energy Consumption Monitoring"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Thesis_androidApplication.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

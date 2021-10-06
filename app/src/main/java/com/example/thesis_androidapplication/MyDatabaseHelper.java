@@ -189,6 +189,39 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT DISTINCT " + READING_DATE + " FROM " + ENERGY_HISTORY_TABLE, null);
     }
 
+    /*method for getting the selected date from the energy consumption Table*/
+    Cursor getEnergyData(String date){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM "+ ENERGY_HISTORY_TABLE +
+                " WHERE " + READING_DATE + " = '" +date+"'",  null);
+    }
+
+    /*void deleteContact(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(CONTACTS_TABLE_NAME, "user_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed to delete contact!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Contact deleted successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }*/
+
+    /*method for deleting the energy consumption data from the database*/
+    void deleteEnergyData_withDate(String date){
+        SQLiteDatabase db = getWritableDatabase();
+        /* db.rawQuery("DELETE FROM " + ENERGY_HISTORY_TABLE + " WHERE " + READING_DATE + " = '"+date+"'", null);*/
+
+        long result = db.delete(ENERGY_HISTORY_TABLE, "reading_date=?", new String[]{date});
+        if (result == -1){
+            Toast.makeText(context, "Failed to delete contact!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Data history deleted successfully!", Toast.LENGTH_SHORT).show();
+        }
+db.close();
+
+    }
+
+
 
 
 }

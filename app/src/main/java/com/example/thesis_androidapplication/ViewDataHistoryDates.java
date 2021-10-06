@@ -1,7 +1,10 @@
 package com.example.thesis_androidapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +18,8 @@ import java.util.List;
 
 public class ViewDataHistoryDates extends AppCompatActivity {
 
+    /*instantiate the activity*/
+    Activity activity = ViewDataHistoryDates.this;
 
 
     /*initializing database helper*/
@@ -42,6 +47,17 @@ public class ViewDataHistoryDates extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "Selected: "+list.get(position), Toast.LENGTH_SHORT).show();
+
+                /*code for intent*/
+                Intent thisIntent = new Intent(ViewDataHistoryDates.this, viewDataConsumption.class);
+
+                Bundle bundle =new Bundle();
+                bundle.putString("date", list.get(position));
+
+
+                thisIntent.putExtras(bundle);
+                /*the reason why the activity is instantiated is so that we can make use of the startActivityforResult method*/
+                activity.startActivityForResult(thisIntent,1);
             }
         });
 
@@ -49,6 +65,16 @@ public class ViewDataHistoryDates extends AppCompatActivity {
 
     }
 
+    /*override method to recreate when a child activity is finished*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+           recreate();
+        }
+    }
+
+    /*method to load the date on the listview*/
     protected void loadDates(){
         //initialize cursor to use in loading the data from the sql lite database
         Cursor cursor = myDB.getHistoryDates();
