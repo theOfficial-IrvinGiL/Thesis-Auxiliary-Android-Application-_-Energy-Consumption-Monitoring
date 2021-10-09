@@ -219,7 +219,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Data history deleted successfully!", Toast.LENGTH_SHORT).show();
         }
-db.close();
+        db.close();
 
     }
 
