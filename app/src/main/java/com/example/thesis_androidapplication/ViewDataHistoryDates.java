@@ -46,7 +46,7 @@ public class ViewDataHistoryDates extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Selected: "+list.get(position), Toast.LENGTH_SHORT).show();
+
 
                 /*code for intent*/
                 Intent thisIntent = new Intent(ViewDataHistoryDates.this, viewDataConsumption.class);
