@@ -38,7 +38,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
 
 
     /* used for getting the date from the Intent on last activity*/
-    protected String reading_date , energy_cost;
+    protected String reading_date , energy_Cost;
 
     List <String> list =new ArrayList<>();
 
@@ -80,10 +80,10 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
 
         /*getting the intent values from last activity*/
         reading_date = bundle.getString("reading_date");
-        energy_cost = bundle.getString("energy_cost");
+        energy_Cost = bundle.getString("energy_cost");
 
         /*display the cost values on the textview*/
-        displayCost.setText(energy_cost);
+        displayCost.setText(energy_Cost);
 
         /*listview code*/
         ListView listView = findViewById(R.id.listView);
@@ -160,7 +160,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                myDB.updateEnergyConsumptionDB(reading_date, getdisplay_name, getEnergy_consumption, getdisplay_name, billToPay);
+                                myDB.updateEnergyConsumptionDB(reading_date, getdisplay_name, getEnergy_consumption, energy_Cost, billToPay);
 
                                 /*if it is successful then remove the name from the listview */
                                 for(int index = 0; index < list.size(); index++){
