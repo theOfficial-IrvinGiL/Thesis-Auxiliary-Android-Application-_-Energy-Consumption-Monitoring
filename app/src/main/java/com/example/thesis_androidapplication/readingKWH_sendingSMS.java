@@ -3,6 +3,7 @@ package com.example.thesis_androidapplication;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,11 +51,18 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     /*used for formatting double values*/
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
+    /*global variable for getting the values from the edittext to be stored on the database*/
+    private String getdisplay_name, getEnergy_consumption, billToPay, get_userNumber ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_kwh_sending_sms);
+
+
+        /**/
+
 
         /*assigning the id of textview*/
         displayCost = findViewById(R.id.display_cost_textview);
@@ -136,31 +144,81 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
 
                         /*call the calculate method
                          * and also format the product to the nearest tenths decimal*/
-                        String billToPay = df2.format(calculate_andSave_data(energy_cost, energy_consumed));
+                        billToPay = df2.format(calculate_andSave_data(energy_cost, energy_consumed));
 
-                        myDB.updateEnergyConsumptionDB(reading_date,
-                                display_name.getEditText().getText().toString().trim(),
-                                energyConsumption_input.getEditText().getText().toString().trim(),
-                                displayCost.getText().toString(),
-                                billToPay);
+                        /*get the values for the edittext*/
+                        getdisplay_name = display_name.getEditText().getText().toString().trim();
+                        getEnergy_consumption = energyConsumption_input.getEditText().getText().toString().trim();
+                        get_userNumber = display_contact.getEditText().getText().toString().trim();
 
-                        /*if it is successful then remove the name from the listview */
-                        for(int index = 0; index < list.size(); index++){
-                            String removeName =  display_name.getEditText().getText().toString().trim();
-                            if(list.get(index).equals(removeName)){
-                                list.remove(index);
-                                arrayAdapter.notifyDataSetChanged(); //notify the list and refresh it
-                                Snackbar.make(findViewById(android.R.id.content),"Energy consumption updated and sms sent!",Snackbar.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(readingKWH_sendingSMS.this);
+                        builder.setTitle("Confirm Dialog:");
+                        builder.setMessage("User: "+getdisplay_name+
+                                "\nContact number: "+get_userNumber+
+                                "\nEnergy consumed (kwh): "+getEnergy_consumption);
+                        builder.setPositiveButton("Send SMS", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                                /*ps wa pa ni send sms na code*/
+                                myDB.updateEnergyConsumptionDB(reading_date, getdisplay_name, getEnergy_consumption, getdisplay_name, billToPay);
 
-                                break;
+                                /*if it is successful then remove the name from the listview */
+                                for(int index = 0; index < list.size(); index++){
+                                    String removeName =  display_name.getEditText().getText().toString().trim();
+                                    if(list.get(index).equals(removeName)){
+                                        list.remove(index);
+                                        arrayAdapter.notifyDataSetChanged(); //notify the list and refresh it
+                                        /*Snackbar.make(findViewById(android.R.id.content),"Energy consumption updated and sms sent!",Snackbar.LENGTH_SHORT).show();*/
+                                        Toast.makeText(getApplicationContext(), "Energy consumption data stored successfully!", Toast.LENGTH_SHORT).show();
+
+                                        /*ps wa pa ni send sms na code*/
+
+                                        break;
+                                    }
+
+                                }
+
+
+                                /*code for sending sms and opening the phone sms app*/
+                                String smsNumber = String.format("smsto: %s", get_userNumber),
+                                        /*variable that holds the sms message*/
+                                        smsMessage = "Hi your electric bill as of "+reading_date+" is ₱ "+billToPay+
+                                                ".\n\nName: "+getdisplay_name+"\nEnergy consumed (kwh): "+getEnergy_consumption
+                                                +"\nRate of energy (kwh): "+energy_cost+"\n\nEnergy Consumption Monitoring System\nDeveloped by: Team SOLID";
+
+                                /*// Create the intent.*/
+                                Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+                                /*// Set the data for the intent as the phone number.*/
+                                smsIntent.setData(Uri.parse(smsNumber));
+                                /* // Add the message (sms) with the key ("sms_body").*/
+                                smsIntent.putExtra("sms_body", smsMessage);
+
+
+                                /*// If package resolves (target app installed), send intent.*/
+                                if (smsIntent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(smsIntent);
+                                } else {
+                                    /*Log.e(TAG, "Can't resolve app for ACTION_SENDTO Intent");*/
+                                    Toast.makeText(getApplicationContext(), "Error: can't resolve app for ACTION_SENDTO Intent", Toast.LENGTH_SHORT).show();
+                                }
+
+                                /*call the method to clear the edit text*/
+                                clearfields();
+
                             }
-                            
-                        }
+                        });
 
-                        /*call the method to clear the edit text*/
-                        clearfields();
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+
+                        //show confirm dialog
+                        builder.create().show();
+
 
 
                     } catch (Exception e) {
@@ -297,6 +355,33 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
         display_name.getEditText().setText("");
         display_contact.getEditText().setText("");
         energyConsumption_input.getEditText().setText("");
+
+    }
+
+    /*mathod for confirmation and sending sms function*/
+    void confirm_and_sendSMS(String name, String contact_Number, String energy_Consumed){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirm Dialog:");
+        builder.setMessage("User: "+name+
+                "\nContact number: "+contact_Number+
+                "\nEnergy consumed: "+energy_Consumed);
+        builder.setPositiveButton("Send SMS", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+
+        //show confirm dialog
+        builder.create().show();
 
     }
 
