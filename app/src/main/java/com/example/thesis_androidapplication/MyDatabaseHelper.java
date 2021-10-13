@@ -33,8 +33,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String PRODUCT_CODES = "product_codes";
 
 
-   /* private static final String CODE = "code";
-    private static final String USER_CODE_TABLE = "User_Code";*/
+
 
     /*the product code for the app activation*/
     private final String[] product_codes = {"193.357.418",
@@ -86,6 +85,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(thisQuery);
         }
 
+        /*for loop used to load the contents of the array into the code table in the
+        * database*/
         for(String addThisCodes: product_codes) {
             String query = "INSERT INTO " + ACTIVATION_CODES_TABLE + " VALUES ('" + addThisCodes + "')";
             db.execSQL(query);
@@ -250,18 +251,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+ACTIVATION_CODES_TABLE+" WHERE "+PRODUCT_CODES+" = '"+code+"'", null);
 
     }
-    Cursor rescanCodeTable(){
-       /* String query = "SELECT * FROM " + ACTIVATION_CODES_TABLE;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;*/
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM "+ACTIVATION_CODES_TABLE,  null);
 
+    /*helper method for scanning the code table
+    * to determine the number of contents in the table*/
+    Cursor rescanCodeTable(){
+        String query = "SELECT * FROM " + ACTIVATION_CODES_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
     }
+
     /*method for deleting the user input code if it is in the database
     * the database contents will not have a 9 out of the original 10 contents
     * and if the database falls below the 10 contents then the app will be considered activated*/
@@ -269,7 +268,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         long result = db.delete(ACTIVATION_CODES_TABLE, "product_codes=?",new String[]{theValue});
         if(result == -1){}else{
-            Toast.makeText(context, "Application product has been activated!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Application has been activated!", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }
