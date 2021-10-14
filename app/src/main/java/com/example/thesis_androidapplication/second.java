@@ -1,12 +1,11 @@
 package com.example.thesis_androidapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class second extends AppCompatActivity implements View.OnClickListener{
 
@@ -15,12 +14,13 @@ public class second extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View clickView) {
         switch (clickView.getId()){
-            case R.id.updateButton:
-                Toast.makeText(this,"Still to be developed", Toast.LENGTH_SHORT).show();
+            case R.id.manage_contacts_card:
+                Intent toAnotherAct =  new Intent(this, manage_contacts.class);
+                startActivity(toAnotherAct);
                 break;
 
-            case R.id.manageContactsButton:
-                Intent toAnotherAct =  new Intent(this, manage_contacts.class);
+            case R.id.update_energy_card:
+                toAnotherAct =  new Intent(this, update_energy.class);
                 startActivity(toAnotherAct);
                 break;
 
@@ -31,16 +31,26 @@ public class second extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-    private Button updateUsers, manageCons;
+
+    CardView update_energy_card, manage_contacts_card;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        updateUsers =  findViewById(R.id.updateButton);
-        manageCons = findViewById(R.id.manageContactsButton);
+        update_energy_card = findViewById(R.id.update_energy_card);
+        manage_contacts_card = findViewById(R.id.manage_contacts_card);
 
-        updateUsers.setOnClickListener(this);
-        manageCons.setOnClickListener(this);
+        update_energy_card.setOnClickListener(this);
+        manage_contacts_card.setOnClickListener(this);
+
+    }
+
+    /* override method to return to parent activity*/
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(second.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

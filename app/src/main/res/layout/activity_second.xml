@@ -4,42 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/custom_background"
     tools:context=".second">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/updateButton"
-        android:layout_width="210dp"
-        android:layout_height="65dp"
-        android:background="@drawable/custom_button1"
-        android:drawableStart="@mipmap/speed_96px"
-        android:text="@string/manage_updateButton"
-        android:textAllCaps="false"
-        android:textColor="#1692ac"
-        android:textSize="17sp"
-        android:textStyle="bold"
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/update_energy_card"
+        android:layout_width="318dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:background="#CA2D2D"
+        android:clickable="true"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/manageContactsButton"
-        android:layout_width="210dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/custom_button1"
-        android:drawableStart="@mipmap/contacts_80px"
-        android:text="@string/manage_contactsButton"
-        android:textAllCaps="false"
-        android:textColor="#1692ac"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/design_default_color_secondary_variant"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="179dp"
+                android:background="@color/white"
+                app:srcCompat="@mipmap/update_energy1" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Update Energy Consumption"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/manage_contacts_card"
+        android:layout_width="318dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:background="#CA2D2D"
+        android:clickable="true"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateButton"
+        app:layout_constraintTop_toBottomOf="@+id/update_energy_card"
+        app:layout_constraintVertical_bias="0.0">
 
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/design_default_color_secondary_variant"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="179dp"
+                android:background="@color/white"
+                app:srcCompat="@mipmap/manage_contact" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Manage Contacts"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

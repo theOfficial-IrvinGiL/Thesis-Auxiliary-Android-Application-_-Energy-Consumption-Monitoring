@@ -10,30 +10,68 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Thesis_androidApplication">
         <activity
-            android:name=".add_contacts"
-            android:label="Add Contacts"
-            android:parentActivityName=".manage_contacts"
-            android:exported="true" />
-        <activity
-            android:name=".manage_contacts"
+            android:name=".splashScreen"
             android:exported="true"
-            android:label="Manage Contacts"
-            android:parentActivityName=".second" />
-        <activity
-            android:name=".second"
-            android:exported="true"
-            android:label="Manage Energy Consumption"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="Energy Consumption Monitoring"
-            android:theme="@style/Theme.Thesis_androidApplication.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".viewDataConsumption"
+            android:exported="true"
+            android:label="Energy Consumption Data"
+            android:parentActivityName=".ViewDataHistoryDates"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewDataHistoryDates"
+            android:exported="true"
+            android:label="Consumption History"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".readingKWH_sendingSMS"
+            android:exported="true"
+            android:label="Update Energy Consumption"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".update_energy"
+            android:exported="true"
+            android:label="Update Energy Consumption"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateContacts"
+            android:exported="true"
+            android:label="Update Contacts"
+            android:parentActivityName=".manage_contacts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".add_contacts"
+            android:exported="true"
+            android:label="Add Contacts"
+            android:parentActivityName=".manage_contacts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".manage_contacts"
+            android:exported="true"
+            android:label="Manage Contacts"
+            android:parentActivityName=".second"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".second"
+            android:exported="true"
+            android:label="Manage Energy Consumption"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Energy Consumption Monitoring"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Thesis_androidApplication.NoActionBar">
+
         </activity>
     </application>
 
