@@ -257,7 +257,7 @@ public class readingKWH_sendingSMS extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.home:
-//                Toast.makeText(this, "selected home", Toast.LENGTH_SHORT).show();
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("You pressed the home button! You are about to leave this activity and end the updating process.");
                 builder.setPositiveButton("Leave", new DialogInterface.OnClickListener() {
