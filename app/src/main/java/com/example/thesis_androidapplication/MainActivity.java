@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             /*do nothing*/
         }else{
             productAlertDialog();
+            ((Button) findViewById(R.id.manageEnergy_Button)).setEnabled(false);
+            ((Button) findViewById(R.id.viewDataHistory_Button)).setEnabled(false);
+            ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(false);
         }
 
 
@@ -144,6 +147,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     // if the input code has a similar input in the database then delete the data to make the row number 9
                     myDB.deleteValuesFromCodeDB(user_input);
+                    /*enable the buttons*/
+                    ((Button) findViewById(R.id.manageEnergy_Button)).setEnabled(true);
+                    ((Button) findViewById(R.id.viewDataHistory_Button)).setEnabled(true);
+                    ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(true);
 
                 }
 
