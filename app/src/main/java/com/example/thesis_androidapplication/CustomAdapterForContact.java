@@ -22,16 +22,18 @@ public class CustomAdapterForContact extends RecyclerView.Adapter<CustomAdapterF
     //add activity object
     Activity activity;
 
-    private ArrayList contact_id, contact_userName, contact_userContact;
+    private ArrayList contact_id, contact_userName, contact_userContact, contact_passcode;
 
     //constructor
-    CustomAdapterForContact(Activity activity, Context context, ArrayList contact_id, ArrayList contact_userName, ArrayList contact_userContact){
+    CustomAdapterForContact(Activity activity, Context context, ArrayList contact_id,
+                            ArrayList contact_userName, ArrayList contact_userContact, ArrayList contact_passcode){
         this.activity = activity;
         this.context = context;
 
         this.contact_id = contact_id;
         this.contact_userName = contact_userName;
         this.contact_userContact = contact_userContact;
+        this.contact_passcode = contact_passcode;
 
     }
 
@@ -60,6 +62,9 @@ public class CustomAdapterForContact extends RecyclerView.Adapter<CustomAdapterF
                 intent.putExtra("contact_id", String.valueOf(contact_id.get(position)));
                 intent.putExtra("contact_name", String.valueOf(contact_userName.get(position)));
                 intent.putExtra("contact_number", String.valueOf(contact_userContact.get(position)));
+                intent.putExtra("contact_passcode", String.valueOf(contact_passcode.get(position)));
+
+
 
                 activity.startActivityForResult(intent, 1);
 

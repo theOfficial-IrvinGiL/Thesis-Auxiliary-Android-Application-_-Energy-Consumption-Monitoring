@@ -17,10 +17,10 @@ public class UpdateContacts extends AppCompatActivity {
     /*instantiate the activity*/
     Activity activity = UpdateContacts.this;
 
-    EditText new_contactName, new_contactNumber;
+    EditText new_contactName, new_contactNumber, new_passcode;
     Button update_button, delete_button;
 
-    String id, userName, contactNumber;
+    String id, userName, contactNumber, passcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class UpdateContacts extends AppCompatActivity {
 
         new_contactName = findViewById(R.id.new_contact_name2);
         new_contactNumber = findViewById(R.id.new_contact_number2);
+        new_passcode = findViewById(R.id.new_contact_passcode);
+
 
         update_button = findViewById(R.id.updateButton);
         delete_button = findViewById(R.id.delete_button);
@@ -66,16 +68,20 @@ public class UpdateContacts extends AppCompatActivity {
     void getAndSetIntentData(){
         if(getIntent().hasExtra("contact_id") &&
                 getIntent().hasExtra("contact_name") &&
-                getIntent().hasExtra("contact_number")){
+                getIntent().hasExtra("contact_number")&&
+                getIntent().hasExtra("contact_passcode")){
 
             id = getIntent().getStringExtra("contact_id");
             userName = getIntent().getStringExtra("contact_name");
             contactNumber = getIntent().getStringExtra("contact_number");
+            passcode = getIntent().getStringExtra("contact_passcode");
+
 
             //setting intent data
 
             new_contactName.setText(userName);
             new_contactNumber.setText(contactNumber);
+            new_passcode.setText(passcode);
         }else{
             Toast.makeText(this, "No data!", Toast.LENGTH_SHORT).show();
         }

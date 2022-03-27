@@ -25,7 +25,7 @@ public class manage_contacts extends AppCompatActivity {
     FloatingActionButton toAddcontacts;
 
     MyDatabaseHelper myDB;
-    ArrayList<String> contact_id, contact_userName, contact_userContact;
+    ArrayList<String> contact_id, contact_userName, contact_userContact, contact_passcode;
 
     //initialize recycler view object
     CustomAdapterForContact customAdapter;
@@ -54,11 +54,12 @@ public class manage_contacts extends AppCompatActivity {
         contact_id = new ArrayList<>();
         contact_userName = new ArrayList<>();
         contact_userContact = new ArrayList<>();
+        contact_passcode = new ArrayList<>();
 
         storeDataInArrays();
 
         //the recycler view object to retrieve from database
-        customAdapter = new CustomAdapterForContact(manage_contacts.this,manage_contacts.this, contact_id, contact_userName, contact_userContact);
+        customAdapter = new CustomAdapterForContact(manage_contacts.this,manage_contacts.this, contact_id, contact_userName, contact_userContact,contact_passcode);
         recyclerview.setAdapter(customAdapter);
         recyclerview.setLayoutManager(new LinearLayoutManager(manage_contacts.this));
 
@@ -87,6 +88,7 @@ public class manage_contacts extends AppCompatActivity {
                 contact_id.add(cursor.getString(0));
                 contact_userName.add(cursor.getString(1));
                 contact_userContact.add(cursor.getString(2));
+                contact_passcode.add(cursor.getString(3));
 
             }
 
