@@ -89,10 +89,13 @@ public class add_contacts extends AppCompatActivity {
                             ClipData clip = ClipData.newPlainText("SerialData", serialData);
                             clipboard.setPrimaryClip(clip);
 
+
+
                             /* snackbar and toast notification */
                             /* Snackbar.make(findViewById(android.R.id.content),"Contact added successfully!",Snackbar.LENGTH_SHORT).show();*/
                             Toast.makeText(getApplicationContext(), "Contact added successfully", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Contact data added to clipboard", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Formatted Serial data copied to clipboard!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Use the recommended serial application to upload data into the Main Unit to register.", Toast.LENGTH_LONG).show();
                             /*set the result code for the parent activity to identify*/
 
                             finish();
