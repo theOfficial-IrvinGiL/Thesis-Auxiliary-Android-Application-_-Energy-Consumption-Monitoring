@@ -26,7 +26,7 @@ public class UpdateContacts extends AppCompatActivity {
     String id, userName, contactNumber, passcode;
 
     //variables for getting the deleted passcode and contact number
-    String del_number, del_passcode;
+    String  del_passcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +101,6 @@ public class UpdateContacts extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 //get the data from text box
                 del_passcode = new_passcode.getText().toString().trim();
-                del_number = new_contactNumber.getText().toString().trim();
                 putDeletedData_toClipboard(); //put the acquired data into clipboard
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateContacts.this);
@@ -129,7 +128,7 @@ public class UpdateContacts extends AppCompatActivity {
     public void onBackPressed() {
         finish();
 
-       
+
     }
 
     /**
@@ -138,7 +137,7 @@ public class UpdateContacts extends AppCompatActivity {
      */
     void putDeletedData_toClipboard() {
         //write code for copying the generated passcode into the clipboard
-        String serialData = del_passcode + "," + del_number + ","; //concatenate the acquired data
+        String serialData = del_passcode + ","; //concatenate the acquired data
 
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("SerialData", serialData);

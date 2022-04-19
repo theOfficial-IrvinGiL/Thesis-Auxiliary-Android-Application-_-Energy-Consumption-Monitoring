@@ -81,8 +81,7 @@ public class add_contacts extends AppCompatActivity {
                                     new_contact_number.getText().toString().trim(), passCode);
 
                             //concatenate the data to be copied on clipboard
-                            String serialData = passCode + ","
-                                    + (new_contact_number.getText().toString().trim()) + ",";
+                            String serialData = passCode + ",";
 
                             //write code for copying the generated passcode into the clipboard
                             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
