@@ -40,10 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
 
                 break;
-            case R.id.instructionManual_Button:
-                Toast.makeText(this,"You have selected instructions manual",Toast.LENGTH_SHORT).show();
 
-                break;
             default:
 
 
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ((Button) findViewById(R.id.manageEnergy_Button)).setOnClickListener(this);
         ((Button) findViewById(R.id.viewDataHistory_Button)).setOnClickListener(this);
-        ((Button) findViewById(R.id.instructionManual_Button)).setOnClickListener(this);
+//        ((Button) findViewById(R.id.instructionManual_Button)).setOnClickListener(this);
 
 
 
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             productAlertDialog();
             ((Button) findViewById(R.id.manageEnergy_Button)).setEnabled(false);
             ((Button) findViewById(R.id.viewDataHistory_Button)).setEnabled(false);
-            ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(false);
+//            ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(false);
         }
 
 
@@ -150,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     /*enable the buttons*/
                     ((Button) findViewById(R.id.manageEnergy_Button)).setEnabled(true);
                     ((Button) findViewById(R.id.viewDataHistory_Button)).setEnabled(true);
-                    ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(true);
+//                    ((Button) findViewById(R.id.instructionManual_Button)).setEnabled(true);
 
                 }
 

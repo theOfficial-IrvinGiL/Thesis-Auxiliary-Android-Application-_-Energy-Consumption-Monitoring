@@ -47,27 +47,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/manageEnergy_Button"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/manageEnergy_Button"
         app:layout_constraintTop_toBottomOf="@+id/manageEnergy_Button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/instructionManual_Button"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="124dp"
-        android:background="@drawable/general_button_design"
-        android:text="@string/main_instructionsManual"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/viewDataHistory_Button"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/viewDataHistory_Button"
-        app:layout_constraintTop_toBottomOf="@+id/viewDataHistory_Button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.226" />
 
     <ImageView
         android:id="@+id/imageView"
